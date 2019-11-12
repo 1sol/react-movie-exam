@@ -1,53 +1,50 @@
-import React, { Component} from 'react';
-import './App.css';
-import Movie from './Movie';
+import React from "react";
+import axios from 'axios';
+import Movie from "./Movie";
+import "./App.css";
 
-class App extends Component {
-
+class App extends React.Component {
   state = {
-  }
-  
+    isLoading: true,
+    movies: []
+  };
+  getMovies = async () => {
+    const {
+      data: {
+        data: { movies }
+      }
+    } = await axios.get(
+      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
+    );
+    this.setState({ movies, isLoading: false });
+  };
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        movies: [
-          {
-            title: "Matrix",
-            poster: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY1200_CR84,0,630,1200_AL_.jpg"
-          },
-          {
-            title: "Full Metal Jacket",
-            poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZtokyqrOsga2TogvQccVfH57JAXnQDPdWkA0Z1lab81Fnn2CR7g&s"
-          },
-          {
-            title: "Oldboy",
-            poster: "https://images-na.ssl-images-amazon.com/images/I/41YK2JYRMJL._SY445_.jpg"
-          },
-          {
-            title: "Star wars",
-            poster: "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-rise-of-skywalker-theatrical-poster-600_889ecbb6.jpeg?region=0%2C0%2C600%2C889"
-          },
-          {
-            title: "IRON MAN",
-            poster: "https://is1-ssl.mzstatic.com/image/thumb/Video128/v4/89/74/cf/8974cfa0-5e27-1c5e-390a-e97e5d12a51d/contsched.rdzrzprk.lsr/268x0w.jpg"
-          }
-        ]
-      })
-    }, 1000)
+    this.getMovies();
   }
-
-  _renderMovies = () => {
-    const movies = this.state.movies.map((movie, index) => {
-      return <Movie title={movie.title} poster={movie.poster} key={index} />
-    })
-    return movies
-  }
-
   render() {
+    const { isLoading, movies } = this.state;
     return (
-      <div className="App">
-        {this.state.movies ? this._renderMovies() : 'Loading'}
-      </div>
+      <section className="container">
+        {isLoading ? (
+          <div className="loader">
+            <span className="loader__text">Loading...</span>
+          </div>
+        ) : (
+          <div className="movies">
+            {movies.map(movie => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                year={movie.year}
+                title={movie.title}
+                summary={movie.summary}
+                poster={movie.medium_cover_image}
+                genres={movie.genres}
+              />
+            ))}
+          </div>
+        )}
+      </section>
     );
   }
 }
