@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/solling1210/react-movie-exam/static/css/main.cd0046f9.chunk.css",
+    "main.js": "/solling1210/react-movie-exam/static/js/main.93e0d69e.chunk.js",
+    "main.js.map": "/solling1210/react-movie-exam/static/js/main.93e0d69e.chunk.js.map",
+    "runtime-main.js": "/solling1210/react-movie-exam/static/js/runtime-main.df8bf209.js",
+    "runtime-main.js.map": "/solling1210/react-movie-exam/static/js/runtime-main.df8bf209.js.map",
+    "static/js/2.34c9898f.chunk.js": "/solling1210/react-movie-exam/static/js/2.34c9898f.chunk.js",
+    "static/js/2.34c9898f.chunk.js.map": "/solling1210/react-movie-exam/static/js/2.34c9898f.chunk.js.map",
+    "index.html": "/solling1210/react-movie-exam/index.html",
+    "precache-manifest.96e242eb4244704fbd6e5587a953b9fd.js": "/solling1210/react-movie-exam/precache-manifest.96e242eb4244704fbd6e5587a953b9fd.js",
+    "service-worker.js": "/solling1210/react-movie-exam/service-worker.js",
+    "static/css/main.cd0046f9.chunk.css.map": "/solling1210/react-movie-exam/static/css/main.cd0046f9.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.df8bf209.js",
+    "static/js/2.34c9898f.chunk.js",
+    "static/css/main.cd0046f9.chunk.css",
+    "static/js/main.93e0d69e.chunk.js"
+  ]
+}
